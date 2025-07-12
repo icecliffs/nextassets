@@ -1,6 +1,6 @@
 # NextAssets (全球隼)
 
-> 下一代资产规划，致力于打造全网最烂的、BUG最多、功能最少、并且资产最少、扫描与攻击面基本没有的攻击面平台
+> 下一代资产规划，致力于打造全网最烂的、BUG最多、功能最少、并且资产最少、扫描与攻击面基本没有的攻击面测绘平台
 
 ---
 
@@ -33,48 +33,42 @@
 
 ## 安装
 
-1. 首先到 Release 下载扫描器  `nextassets_scanner-linux_x86_64.zip`
-2. ~~接着配置 nextassets 扫描器里的 `config.yaml`，需要到 [Next Assets 授权中心](https://nextassets.iloli.moe) 进行一机一码认证授权，将授权码贴到配置文件里~~，不需要授权了，我懒得写，爱咋扫咋扫吧，只需要配置mysql就行
+1. 数据库服务最好跑在 Docker 里，如果宿主出了问题我担负不起，只需要跑 Redis 和 MySQL 即可
+2. 然后运行扫描器  `nextassets_scanner-v0.0.1-macos-arm64`
+3. ~~接着配置 nextassets 扫描器里的 `config.yaml`，需要到 [Next Assets 授权中心](https://nextassets.iloli.moe) 进行一机一码认证授权，将授权码贴到配置文件里~~，不需要授权了，我懒得写，爱咋扫咋扫吧，只需要配置mysql就行
 
-```yaml
-verify: BMzTJmezAzPWn9/T9BpMuHnDn336PCPRMFAq9wpuH778ouYZeOCsmk8SYxOZ5O8K6sHjNo/jPV1DX4vt5eWTQiSaXAxWtE2tib9TY9DJxanNOGIptVD7yyEenKSbvDsH4FSyzCGWcTnc1AGKJrAVA478XCaFfNRIiPYJtOXTqSwhtDIACX2CbL34fFNfCj0+F1quIK6lmI01NDQUMhslQY7LDkZKbpR6aAT/SuPOnNAnN6QRSBixz2h294BZWddgttJmFL0aNcgxKczHTUK95Fl7TrmniVHy+7SSK4dkrgvKMq+vgcTL3S1wML6Vn2qJOqRkKNvjPlnljyuo0y9eSonWV9B7VmodBWyQRRn152fXCVzpyO5PThIKO7dNWtmCsz+LazczW+9VjlvDNwXpRwTM0yZnswMz1p/f0/QaTLh5w599+jwj0TBQKvcKbh++/KLmGXjgrJpPEmMTmeTvCurB4zaP4z1dQ1+L7eXlk0IkmlwMVrRNrYm/U2PQycWpzThiKbVQ+8shHpykm7w7B+BUsswhlnE53NQBiiawFQOO/FwmhXzUSIj2CbTl06ksIbQyAAl9gmy9+HxTXwo9PhdariCupZiNNTQ0FDIbJUGOyw5GSm6UemgE/0rjzpzQJzekEUgYsc9odveAWVnXYLbSZhS9GjXIMSnMx01CveRZe065p4lR8vu0kiuHZK4LyjKvr4HEy90tcDC+lZ9qiTqkZCjb4z5Z5Y8rqNMvXkqJ1lfQe1ZqHQVskEUZ9edn1wlc6cjuT04SCju3TVrZgrM/i2s3M1vvVY5bwzcF6UcEzNMmZ7MDM9af39P0Gky4ecOfffo8I9EwUCr3Cm4fvvyi5hl44KyaTxJjE5nk7wrqweM2j+M9XUNfi+3l5ZNCJJpcDFa0Ta2Jv1Nj0MnFqc04Yim1UPvLIR6cpJu8OwfgVLLMIZZxOdzUAYomsBUDjvxcJoV81EiI9gm05dOpLCG0MgAJfYJsvfh8U18KPT4XWq4grqWYjTU0NBQyGyVBjssORkpulHpoBP9K486c0Cc3pBFIGLHPaHb3gFlZ12C20mYUvRo1yDEpzMdNQr3kWXtOuaeJUfL7tJIrh2SuC8oyr6+BxMvdLXAwvpWfaok6pGQo2+M+WeWPK6jTL15KidZX0HtWah0FbJBFGfXnZ9cJXOnI7k9OEgo7t01a2YKzP4trNzNb71WOW8M3BelHBMzTJmezAzPWn9/T9BpMuHnDn336PCPRMFAq9wpuH778ouYZeOCsmk8SYxOZ5O8K6sHjNo/jPV1DX4vt5eWTQiSaXAxWtE2tib9TY9DJxanNOGIptVD7yyEenKSbvDsH4FSyzCGWcTnc1AGKJrAVA478XCaFfNRIiPYJtOXTqSzkQU2IHXpMBvbRTYogwsIr
-server:
-  host: nextassets_platform
-  port: 11451
-  key: q9urXQ9SuUeS6CkztnqaDEn2qgXROqNWJ5lEfkoLj6U=
-
-mysql:
-  host: icecliffs
-  port: 3306
-  username: nextassets
-  password: nextassets
-  database: nextassets
-```
-
-3. 下载 nextassets 分析平台 `nextassets_platform-linux_x86_64.zip`
+3. 下载 nextassets 分析平台 `nextassets_platform-v0.0.1-macos-arm64`
 4. 接着配置 nextassets 分析平台里的 `config.yaml`
 
 ```yaml
+server:
+  host: 127.0.0.1
+  port: 8080
+
 mysql:
-  host: icecliffs
+  host: 127.0.0.1
   port: 3306
   username: nextassets
-  password: nextassets
+  password: 123456
   database: nextassets
 
 redis:
-  host: icecliffs
+  host: 127.0.0.1
   port: 6379
-  password: "nextassets"
+  password: "123456"
 ```
 
-5. 启动扫描器对资产进行扫描
+5. 启动扫描器对资产进行扫描，扫描器最好下载 GeoLite2-City.mmdb 和 GeoLite2-ASN.mmdb 来获取 ASN 和地理位置（如果扫全网的话），具体参数自己看吧，不想写了
 
 ```
-./nextassets_scanner -t 100 -h 1.0.0.0/8,2.0.0.0/8
+./nextassets_scanner-v0.0.1-macos-arm64 -t 64 -h 1.0.0.0/8,2.0.0.0/8 -p 198,2003
 ```
 
-6. 在分析平台查看对应的扫描结果
+6. 在分析平台查看对应的扫描结果（分析平台因为作者自己扫的全网，所以缓存时间设置为12小时🧐，建议前期使用语法搜索你扫描的网段 `ip="192.168.50.0/24"`）
+
+```
+./nextassets_platform-v0.0.1-macos-arm64
+```
 
 ## 技术实现
 
