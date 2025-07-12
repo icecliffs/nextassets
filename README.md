@@ -34,7 +34,7 @@
 ## 安装
 
 1. 首先到 Release 下载扫描器  `nextassets_scanner-linux_x86_64.zip`
-2. 接着配置 nextassets 扫描器里的 `config.yaml`，需要到 [Next Assets 授权中心](https://nextassets.iloli.moe) 进行一机一码认证授权，将授权码贴到配置文件里
+2. ~~接着配置 nextassets 扫描器里的 `config.yaml`，需要到 [Next Assets 授权中心](https://nextassets.iloli.moe) 进行一机一码认证授权，将授权码贴到配置文件里~~，不需要授权了，我懒得写，爱咋扫咋扫吧，只需要配置mysql就行
 
 ```yaml
 verify: BMzTJmezAzPWn9/T9BpMuHnDn336PCPRMFAq9wpuH778ouYZeOCsmk8SYxOZ5O8K6sHjNo/jPV1DX4vt5eWTQiSaXAxWtE2tib9TY9DJxanNOGIptVD7yyEenKSbvDsH4FSyzCGWcTnc1AGKJrAVA478XCaFfNRIiPYJtOXTqSwhtDIACX2CbL34fFNfCj0+F1quIK6lmI01NDQUMhslQY7LDkZKbpR6aAT/SuPOnNAnN6QRSBixz2h294BZWddgttJmFL0aNcgxKczHTUK95Fl7TrmniVHy+7SSK4dkrgvKMq+vgcTL3S1wML6Vn2qJOqRkKNvjPlnljyuo0y9eSonWV9B7VmodBWyQRRn152fXCVzpyO5PThIKO7dNWtmCsz+LazczW+9VjlvDNwXpRwTM0yZnswMz1p/f0/QaTLh5w599+jwj0TBQKvcKbh++/KLmGXjgrJpPEmMTmeTvCurB4zaP4z1dQ1+L7eXlk0IkmlwMVrRNrYm/U2PQycWpzThiKbVQ+8shHpykm7w7B+BUsswhlnE53NQBiiawFQOO/FwmhXzUSIj2CbTl06ksIbQyAAl9gmy9+HxTXwo9PhdariCupZiNNTQ0FDIbJUGOyw5GSm6UemgE/0rjzpzQJzekEUgYsc9odveAWVnXYLbSZhS9GjXIMSnMx01CveRZe065p4lR8vu0kiuHZK4LyjKvr4HEy90tcDC+lZ9qiTqkZCjb4z5Z5Y8rqNMvXkqJ1lfQe1ZqHQVskEUZ9edn1wlc6cjuT04SCju3TVrZgrM/i2s3M1vvVY5bwzcF6UcEzNMmZ7MDM9af39P0Gky4ecOfffo8I9EwUCr3Cm4fvvyi5hl44KyaTxJjE5nk7wrqweM2j+M9XUNfi+3l5ZNCJJpcDFa0Ta2Jv1Nj0MnFqc04Yim1UPvLIR6cpJu8OwfgVLLMIZZxOdzUAYomsBUDjvxcJoV81EiI9gm05dOpLCG0MgAJfYJsvfh8U18KPT4XWq4grqWYjTU0NBQyGyVBjssORkpulHpoBP9K486c0Cc3pBFIGLHPaHb3gFlZ12C20mYUvRo1yDEpzMdNQr3kWXtOuaeJUfL7tJIrh2SuC8oyr6+BxMvdLXAwvpWfaok6pGQo2+M+WeWPK6jTL15KidZX0HtWah0FbJBFGfXnZ9cJXOnI7k9OEgo7t01a2YKzP4trNzNb71WOW8M3BelHBMzTJmezAzPWn9/T9BpMuHnDn336PCPRMFAq9wpuH778ouYZeOCsmk8SYxOZ5O8K6sHjNo/jPV1DX4vt5eWTQiSaXAxWtE2tib9TY9DJxanNOGIptVD7yyEenKSbvDsH4FSyzCGWcTnc1AGKJrAVA478XCaFfNRIiPYJtOXTqSzkQU2IHXpMBvbRTYogwsIr
@@ -49,11 +49,6 @@ mysql:
   username: nextassets
   password: nextassets
   database: nextassets
-
-redis:
-  host: icecliffs
-  port: 6379
-  password: "nextassets"
 ```
 
 3. 下载 nextassets 分析平台 `nextassets_platform-linux_x86_64.zip`
