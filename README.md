@@ -29,7 +29,7 @@
 
 - [x] IPv6 支持、扫描器认证机制、蜜罐 / 蜜网识别
 
-- [ ] 全球资产测绘进度（娱乐用）<img src="https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-0.00594%25(222000/3706585103)-brightgreen)"/>，自2025年7月9日以来
+- [ ] 全球资产测绘进度（娱乐用）<img src="https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-0.80%25(30000000/3706585103)-brightgreen)"/>，自2025年7月9日以来
 
 ## 安装
 
