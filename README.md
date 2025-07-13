@@ -7,7 +7,7 @@
 <div align="center">  
     <img src="./assets/不安です.png"> 
 </div> 
-
+[简体中文](./README.md)、[繁體中文](./README-zh-TW.md)、[English](./README-en-US.md)、[조선어](./README-ko-KP.md)
 
 ## 简介
 
