@@ -34,6 +34,13 @@
 - [x] IPv6 支持、扫描器认证机制、蜜罐 / 蜜网识别、周期扫描、SRC 定制扫描、请求/响应分析
 - [ ] 全球资产测绘进度（娱乐用）<img src="https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-0.80%25(70000000/3706585103)-brightgreen)"/>，自2025年7月9日以来
 
+> 资产轮询使用方法，先用命令行吧，比自带的好使（
+
+```bash
+# /etc/crontab
+0 3 * * 1 /tools/scanner -d blog.iloli.moe,iloli.moe --brute -t 64 -g "iloli站点"
+```
+
 兄弟们，资产太多了后端查询炸了，重新写查询中
 
 ![](./assets/muzumi.png)
