@@ -1,6 +1,6 @@
-# NextAssets (全球隼)
+# NextAssets
 
-> 下一代资产规划，致力于打造全网最烂的、BUG最多、功能最少、并且资产最少、扫描与攻击面基本没有的攻击面测绘平台（暂时不更了，别点star，用的人少点我的压力就少点）
+> Dedicated to becoming the worst attack surface mapping platform on the entire internet — with the most bugs, the fewest features, almost no assets, and barely any scanning or attack-surface capability at all.
 
 ---
 
@@ -13,42 +13,40 @@
 - [English](README-en-US.md)
 - [조선어](README-ko-KP.md)
 
-## 简介
+## Introduction
 
-**NextAssets** 是一款面向赛博空间保安从业者与互联网情报搜集保安的自动化资产发现与整理平台，支持多维度的网络空间测绘采集与多维度资产管理，覆盖域名/IP/端口等基础信息，支持HTTP/S、安全扫描、漏洞扫描、组件识别、指纹识别、自动化FUZZ、JS安全分析、SSL证书分析等功能，便于高效网络空间测绘与威胁关联分析，本系统会自动化对扫描到的数据进行数据清洗和去重，并且可以针对 SRC 项目进行自动化监控。
+NextAssets is an automated asset discovery and management platform designed for cybersecurity practitioners and internet intelligence analysts. It supports multidimensional cyberspace mapping and asset management, covering core information such as domains, IPs, and ports.
+The platform provides functionalities including HTTP/HTTPS scanning, security scanning, vulnerability scanning, component and fingerprint identification, automated fuzzing, JavaScript security analysis, SSL certificate analysis, and more — enabling efficient cyberspace mapping and threat correlation analysis.
 
-> PS：如果您觉得该项目眼熟，那就对了！如有巧合，纯属雷同。
+The system automatically performs data cleaning and deduplication on collected scan results and also supports automated monitoring for SRC (Security Response Center) programs.
 
-在此之前，曾使用Python写过一个非常垃圾的版本：http://github.com/icecliffs/Cliffscan
+> PS: If this project looks familiar to you, that’s right! Any resemblance is purely coincidental.
 
-<div align="center">
-<p>本项目所使用的技术仅供安全人员使用，出了事情后果自负，本项目仅供学习交流</p>
-</div>
+Previously, I wrote a very trashy version of this in Python: http://github.com/icecliffs/Cliffscan
 
-## 功能
+## Features
 
-- [X] 想想市场上常见的安全厂商的漏扫，跟那些差不多，无非就是少个POC库🫠
-- [ ] 全球资产测绘进度（娱乐用）<img src="https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-0.86%25(32000000/3706585103)-brightgreen)"/>，自2025年7月9日以来
+- [X] Think of the common vulnerability scanners from major security vendors — it’s basically the same, just without a PoC library 🫠
+- [ ]Global asset mapping progress (for entertainment): <img src="https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-0.86%25(32000000/3706585103)-brightgreen)"/> since July 9, 2025
 
-> 资产轮询使用方法，先用命令行吧，比自带的好使（
+> Usage of asset polling — start with the command-line version; it works better than the built‑in one
 
 ```bash
 # /etc/crontab
 0 3 * * 1 /tools/scanner -d blog.iloli.moe,iloli.moe --brute -t 64 -g "iloli站点"
 ```
 
-兄弟们，资产太多了后端查询炸了，重新写查询中
+Guys, there are too many assets and the backend queries have crashed. Rewriting the query logic now
 
 ![](./assets/muzumi.png)
 
-## 安装
+## Installation
 
-1. 数据库服务最好跑在 Docker 里，如果宿主出了问题我担负不起，只需要跑 Redis 和 MySQL 即可
-2. 然后运行扫描器  `nextassets_scanner-v0.0.1-macos-arm64`
-3. ~~接着配置 nextassets 扫描器里的 `config.yaml`，需要到 [Next Assets 授权中心](https://nextassets.iloli.moe) 进行一机一码认证授权，将授权码贴到配置文件里~~，不需要授权了，我懒得写，爱咋扫咋扫吧，只需要配置mysql就行
-
-3. 下载 nextassets 分析平台 `nextassets_platform-v0.0.1-macos-arm64`
-4. 接着配置 nextassets 分析平台里的 `config.yaml`
+1. It’s recommended to run the database services in Docker. I’m not responsible if something goes wrong on the host. You only need Redis and MySQL.
+2. Then run the scanner: `nextassets_scanner-v0.0.1-macos-arm64`
+4. Next, configure config.yaml in the NextAssets scanner. You used to need to authenticate via the Next Assets Authorization Center with a machine-specific code, then paste the license into the config file. No authorization is needed anymore — just configure MySQL and start scanning.
+3. Download the NextAssets analysis platform: `nextassets_platform-v0.0.1-macos-arm64`
+4. Then configure `config.yaml` in the NextAssets analysis platform.
 
 ```yaml
 server:
@@ -68,7 +66,7 @@ redis:
   password: "123456"
 ```
 
-5. 启动扫描器对资产进行扫描，扫描器最好下载 GeoLite2-City.mmdb 和 GeoLite2-ASN.mmdb 来获取 ASN 和地理位置（如果扫全网的话），具体参数自己看吧，不想写了
+5. Start the scanner to scan assets. It’s recommended to download GeoLite2-City.mmdb and GeoLite2-ASN.mmdb to obtain ASN and geolocation information (especially if scanning the entire internet). Check the parameters yourself — I’m too lazy to write them.
 
 ```
 ./nextassets_scanner-v0.0.1-macos-arm64 -t 64 -h 1.0.0.0/8,2.0.0.0/8 -p 198,2003
@@ -76,7 +74,7 @@ redis:
 
 ![image-20250713155509753](./assets/image-20250713155509753.png)
 
-6. 在分析平台查看对应的扫描结果（分析平台因为作者自己扫的全网，所以缓存时间设置为12小时🧐，建议前期使用语法搜索你扫描的网段 `ip="192.168.50.0/24"`）**分析平台汇会自动初始化数据库，建议设置数据库名为 nextassets**，然后查询也有缓存，具体12分钟刷新一次，所以还是建议等扫描完后在查询。。。
+6. View the corresponding scan results on the analysis platform. (Since the author scanned the entire internet, the platform cache is set to 12 hours 🧐. It’s recommended to use syntax search for your scanned subnet early on, e.g., ip="192.168.50.0/24".), The analysis platform will automatically initialize the database — it’s recommended to name it nextassets. Queries are also cached and refresh every 12 minutes, so it’s better to wait until the scan is complete before running queries.
 
 ```
 ./nextassets_platform-v0.0.1-macos-arm64
@@ -84,29 +82,29 @@ redis:
 
 ![image-20250713155517716](./assets/image-20250713155517716.png)
 
-7. 最后到分析平台看看你扫了什么东西吧，enjoy :)
+7. Finally, check out what you’ve scanned on the analysis platform. Enjoy :)
 
-## 技术实现
+## Technical Implementation
 
-目前主要分为三个端，分别是探针（扫描器，初步完成）、分析平台（态势整理，已完成）和研判平台（已基本实现，能对所有资产进行安全分析，引入 fscan 进行安全风险检测）
+Currently, the system is mainly divided into three components: the Probe (scanner, initially completed), the Analysis Platform (situation aggregation, completed), and the Assessment Platform (basically implemented, capable of performing security analysis on all assets and integrating fscan for security risk detection).
 
 ![image-20250709001409876](./assets/image-20250709001409876.png)
 
-probe 端只需要负责扫描即可，而 trend 和 hunter 端需要考虑的东西可多了，probe 只负责采集资产信息然后推送到分析平台，而分析平台会对探针数据，做资产归类等分析，并且将结果可视化识别
+The probe only needs to handle scanning, while the trend and hunter components have much more to consider. The probe is responsible solely for collecting asset information and pushing it to the analysis platform. The analysis platform then categorizes the probe data, performs further analysis, and visualizes the results.
 
-扫描器独立运行，可分布在不同的机子上面，只需要保证数据库和平台消息队列配置没有出错即可
+The scanner runs independently and can be distributed across different machines, as long as the database and platform message queue configurations are correct.
 
-我的扫描方：亚马逊、Vultr 等 VPS 各有 3 台机子，节点分别为日本、香港、美国、新加坡、台湾，然后发起扫描，最后返回数据到某台服务器上
+My scanning setup: three VPS machines each from providers like Amazon and Vultr, with nodes located in Japan, Hong Kong, the US, Singapore, and Taiwan. Scans are initiated from these nodes, and the data is ultimately returned to a single server.
 
-## 语法说明
+## Syntax Guide
 
-首页有搜索框，可以输入相对应的语法进行资产搜索
+The homepage has a search box where you can enter the corresponding syntax to search for assets.
 
-> 搜索
+> Search
 
 ![image-20250713162049187](./assets/image-20250713162049187.png)
 
-- 具体语法
+- Syntax Details
 
 ```bash
 ip	查询资产IP	ip="116.62.191.10"
