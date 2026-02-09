@@ -2,6 +2,12 @@
 
 > Dedicated to becoming the worst attack surface mapping platform on the entire internet — with the most bugs, the fewest features, almost no assets, and barely any scanning or attack-surface capability at all.
 
+<!--
+bugbountymasterclass.com
+fakeusername: icecliffs
+fakepassword: icecliffs
+-->
+
 ---
 
 <div align="center">  
